@@ -5,7 +5,6 @@ export const useHeaderBarStore = defineStore("headerStore", () => {
 
     function setBorderColor(newColor: string) {
         currentBorderColor.value = newColor
-        console.log("Color modification received!")
     }
 
     return {currentBorderColor, setBorderColor}
