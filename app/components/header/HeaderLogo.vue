@@ -1,6 +1,8 @@
 <template>
     <header-buttons :color="'#12b8ff'">
-        <b class="glow">kimsseTheWolf</b>
+        <template #icon>
+            <b class="glow">kimsseTheWolf</b>
+        </template>
     </header-buttons>
 </template>
 <style scoped>

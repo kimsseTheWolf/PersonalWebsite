@@ -24,13 +24,17 @@ function setColor(color) {
 </script>
 <template>
     <div class="header-buttons" @mouseenter="setColor(props.color)">
-        <slot></slot>
+        <div class="header-icon">
+            <slot name="icon"></slot>
+        </div>
+        <div>
+            <slot></slot>
+        </div>
     </div>
 </template>
 <style scoped>
 .header-buttons {
     width: fit-content;
-    height: auto;
     margin: 0;
     padding-left: 15px;
     padding-right: 15px;
@@ -44,6 +48,10 @@ function setColor(color) {
     cursor: pointer;
     transition: all 0.1s;
     user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .header-buttons:hover {
@@ -53,5 +61,14 @@ function setColor(color) {
 
 .header-buttons:active {
     filter: brightness(80%);
+}
+
+.header-icon {
+    height: auto;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 </style>

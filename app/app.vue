@@ -2,23 +2,34 @@
   <HeaderContainer>
     <header-logo/>
     <header-buttons>
-      <Icon name="tabler:home"/>
+      <template #icon>
+        <Icon name="tabler:home"/>
+      </template>
       Home
     </header-buttons>
     <header-buttons :color="'#d19a66'">
-      <Icon name="tabler:music"/>
+      <template #icon>
+        <Icon name="tabler:music"/>
+      </template>
       Music
     </header-buttons>
     <header-buttons :color="'#4fafef'">
-      <Icon name="tabler:device-desktop-code"/>
+      <template #icon>
+        <Icon name="tabler:device-desktop-code"/>
+      </template>
       Programming
     </header-buttons>
     <header-buttons :color="'#4FF1C0'">
-      <Icon name="tabler:device-gamepad-2"/>
+      <template #icon>
+        <Icon name="tabler:device-gamepad-2"/>
+      </template>
       Games
     </header-buttons>
     <header-buttons>
-      <Icon name="ri:mail-send-line"/>
+      <template #icon>
+        <Icon name="ri:mail-send-line"/>
+      </template>
+      Contact
     </header-buttons>
   </HeaderContainer>
 
