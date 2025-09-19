@@ -11,7 +11,7 @@
       <template #icon>
         <Icon name="tabler:music"/>
       </template>
-      Music
+      Music & Art
     </header-buttons>
     <header-buttons :color="'#4fafef'">
       <template #icon>

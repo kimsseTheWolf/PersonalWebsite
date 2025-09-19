@@ -21,7 +21,7 @@ const lastScrollTop = ref(0)
 const scrollDirection = ref(null)
 const isMouseHovered = ref(false)
 
-const shouldShowText = computed(() => {
+const shouldShowTextOnScroll = computed(() => {
     // Scroll handle
     if (scrollDirection.value == "down") {
         return false
@@ -31,6 +31,15 @@ const shouldShowText = computed(() => {
     }
     else {
         return true
+    }
+})
+
+const shouldShowTextOnHover = computed(() => {
+    if (borderStore.isBarOnHover) {
+        return true
+    }
+    else {
+        return false
     }
 })
 
@@ -63,7 +72,7 @@ onBeforeMount(() => {
         <div class="header-icon">
             <slot name="icon"></slot>
         </div>
-        <div v-if="shouldShowText">
+        <div v-if="shouldShowTextOnScroll || shouldShowTextOnHover">
             <slot></slot>
         </div>
     </div>

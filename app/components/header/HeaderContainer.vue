@@ -27,7 +27,7 @@ const themeColor = computed(() => {
 }) // this will be used in the CSS, DO NOT REMOVE
 </script>
 <template>
-    <div class="the-header-container">
+    <div class="the-header-container" @mouseenter="borderStore.setIsBarOnHover(true)"" @mouseleave="borderStore.setIsBarOnHover(false)">
         <slot></slot>
     </div>
 </template>
