@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
-    "nuxt-anime"
+    "nuxt-anime",
+    '@pinia/nuxt'
   ]
 })
