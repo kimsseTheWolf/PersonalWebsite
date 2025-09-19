@@ -1,4 +1,6 @@
 <script setup lang="js">
+import { headerBarStore } from '~/stores/header_bar_store'
+
 const props = defineProps({
     color: {
         type: String,
@@ -10,6 +12,8 @@ const props = defineProps({
     }
 })
 
+const borderStore = headerBarStore()
+
 const unfocusBackgroundColor = computed(() => {
     return props.color + "99"
 })
@@ -18,7 +22,11 @@ const focusedBackgroundColor = computed(() => {
     return props.color
 })
 
-const themeColor = toRef(props.themeColor)
+const themeColor = ref(borderStore.currentBorderColor)
+
+watch(borderStore.currentBorderColor, (newValue, oldValue) => {
+    console.log("Change in border color received")
+})
 </script>
 <template>
     <div class="the-header-container">

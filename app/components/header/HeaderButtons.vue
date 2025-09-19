@@ -1,4 +1,6 @@
 <script setup lang="js">
+import { headerBarStore } from '~/stores/header_bar_store'
+
 const props = defineProps({
     color: {
         type: String,
@@ -10,11 +12,18 @@ const props = defineProps({
     }
 })
 
+function setColor(color) {
+    borderStore.setBorderColor(color)
+    console.log("Header border color set!")
+}
+
+const borderStore = headerBarStore()
+
 const themeColor = toRef(props.color)
 const secondThemeColor = toRef(props.altColor)
 </script>
 <template>
-    <div class="header-buttons">
+    <div class="header-buttons" @mouseenter="setColor(props.color)">
         <slot></slot>
     </div>
 </template>
