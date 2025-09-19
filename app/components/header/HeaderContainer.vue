@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { headerBarStore } from '~/stores/header_bar_store'
+import { useHeaderBarStore } from '~/stores/header_bar_store'
 
 const props = defineProps({
     color: {
@@ -12,7 +12,7 @@ const props = defineProps({
     }
 })
 
-const borderStore = headerBarStore()
+const borderStore = useHeaderBarStore()
 
 const unfocusBackgroundColor = computed(() => {
     return props.color + "99"
@@ -22,11 +22,9 @@ const focusedBackgroundColor = computed(() => {
     return props.color
 })
 
-const themeColor = ref(borderStore.currentBorderColor)
-
-watch(borderStore.currentBorderColor, (newValue, oldValue) => {
-    console.log("Change in border color received")
-})
+const themeColor = computed(() => {
+    return borderStore.currentBorderColor
+}) // this will be used in the CSS, DO NOT REMOVE
 </script>
 <template>
     <div class="the-header-container">
