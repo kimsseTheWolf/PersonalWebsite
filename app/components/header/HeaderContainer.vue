@@ -43,7 +43,7 @@ const themeColor = computed(() => {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     transition: all 0.1s;

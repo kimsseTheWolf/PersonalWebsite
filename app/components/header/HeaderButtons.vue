@@ -50,9 +50,9 @@ function setColor(color) {
 
 function handleOnScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if ((currentScrollTop - lastScrollTop.value) > 25) {
+    if ((currentScrollTop - lastScrollTop.value) > 50) {
         scrollDirection.value = "down"; // 向下
-    } else if (currentScrollTop - lastScrollTop.value < -25) {
+    } else if (currentScrollTop - lastScrollTop.value < -50) {
         scrollDirection.value = "up";   // 向上
     }
     lastScrollTop.value = currentScrollTop <= 0 ? 0 : currentScrollTop; // 防止负值
@@ -72,9 +72,11 @@ onBeforeMount(() => {
         <div class="header-icon">
             <slot name="icon"></slot>
         </div>
-        <div v-if="shouldShowTextOnScroll || shouldShowTextOnHover">
-            <slot></slot>
-        </div>
+        <transition name="text-box-animation">
+            <div v-if="shouldShowTextOnScroll || shouldShowTextOnHover" class="header-text-box">
+                <slot></slot>
+            </div>
+        </transition>
     </div>
 </template>
 <style scoped>
@@ -116,4 +118,36 @@ onBeforeMount(() => {
     justify-content: center;
     align-items: center;
 }
+
+.header-text-box {
+    overflow: hidden;
+}
+
+/* Animation definitions */
+/* .text-box-animation-enter-from {
+    opacity: 0;
+    max-width: 0;
+}
+
+.text-box-animation-enter-to {
+    opacity: 1;
+    max-width: 500px;
+}
+
+.text-box-animation-leave-from {
+    opacity: 1;
+    max-width: 500px;
+}
+
+.text-box-animation-leave-to {
+    opacity: 0;
+    max-width: 0;
+}
+.text-box-animation-enter-active {
+    transition: opacity 0.3s;
+}
+
+.text-box-animation-leave-active {
+    transition: opacity 0.3s;
+} */
 </style>
