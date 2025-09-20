@@ -50,9 +50,9 @@ function setColor(color) {
 
 function handleOnScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if ((currentScrollTop - lastScrollTop.value) > 50) {
+    if ((currentScrollTop - lastScrollTop.value) > 25) {
         scrollDirection.value = "down"; // 向下
-    } else if (currentScrollTop - lastScrollTop.value < -50) {
+    } else if (currentScrollTop - lastScrollTop.value < -25) {
         scrollDirection.value = "up";   // 向上
     }
     lastScrollTop.value = currentScrollTop <= 0 ? 0 : currentScrollTop; // 防止负值

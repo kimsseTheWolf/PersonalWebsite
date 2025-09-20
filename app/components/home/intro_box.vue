@@ -14,7 +14,15 @@
             <Icon name="ri:gamepad-line" class="intro-title-icon"/>
             <div>Games</div>
         </div>
-        <div style="font-size: larger;"><b>All</b> of the things I am passioned about!</div>
+        <div style="font-size: larger; margin-bottom: 15px;"><b>All</b> of the things I am passioned about!</div>
+        <GeneralRoundButton>
+            <template #icon>
+                <Icon name="ri:arrow-down-line"/>
+            </template>
+            <template #default>
+                SCROLL DOWN TO LEARN MORE!
+            </template>
+        </GeneralRoundButton>
     </div>
 </template>
 <style scoped>
