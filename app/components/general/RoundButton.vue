@@ -21,7 +21,7 @@
     border-radius: 100px;
     border-style: solid;
     border-color: #ffffff;
-    border-width: 3px;
+    border-width: 2px;
     background-color: #ffffff00;
     color: white;
     cursor: pointer;
