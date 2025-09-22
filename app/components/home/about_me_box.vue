@@ -1,4 +1,5 @@
 <script setup lang="js">
+const ongoingProjectsList = ref([1,2,3,4,5])
 </script>
 <template>
     <GeneralRoundContentBlock style="background-color: rgba(0, 0, 0, 0);">
@@ -32,12 +33,28 @@
                     </Card>
                     <Card>
                         <template #content>
-                            <div class="title">Ongoing Projects</div>
+                            <div style="display: flex; flex-direction: column;">
+                                <div class="title">Ongoing Projects</div>
+                                <div class="projects-container" v-if="ongoingProjectsList.length !== 0">
+                                    <p>Here are the projects that are still ongoing:</p>
+                                </div>
+                                <div class="projects-container" v-else>
+                                    <p>There are no projects that are still onging. Maybe come back later ;)</p>
+                                </div>
+                                <div style="display: flex; flex-direction: row;">
+                                    <Button label="View full project list" size="large">
+                                        <template #icon>
+                                            <Icon name="ri:arrow-right-up-line"></Icon>
+                                        </template>
+                                    </Button>
+                                </div>
+                            </div>
                         </template>
                     </Card>
                 </div>
                 <div class="photo-column">
-                    <GeneralLinkCard/>
+                    <GeneralLinkCard style="margin-bottom: 20px;"/>
+                    <GeneralEmailMeCard/>
                 </div>
             </div>
         </template>
@@ -74,5 +91,11 @@
     line-height: 120%;
     margin-bottom: 15px;
     font-size: 20px;
+}
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
 }
 </style>

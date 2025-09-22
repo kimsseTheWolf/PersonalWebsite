@@ -57,7 +57,7 @@ body {
   overflow-x: hidden;
 }
 html {
-  background-color: #06131f;
+  background-color: #020408;
   color: white;
 }
 </style>
