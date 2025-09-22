@@ -34,6 +34,18 @@
   </HeaderContainer>
 
   <NuxtPage/>
+
+  <FooterContainer>
+    <div style="margin-right: 20px;">This website is developed with <Icon name="ri:heart-3-fill"/> by kimsseTheWolf</div>
+    <div style="display: flex; flex-direction: row;">
+      <Button label="View Source Code on GitHub" variant="text" severity="secondary">
+        <template #icon>
+          <Icon name="ri:github-fill"/>
+        </template>
+      </Button>
+    </div>
+    <div>© 2025 kimsseTheWolf. All Rights Reserved.</div>
+  </FooterContainer>
 </template>
 <style>
 :root {
