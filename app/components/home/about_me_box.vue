@@ -6,7 +6,8 @@ const ongoingProjectsList = ref([1,2,3,4,5])
         <template #default>
             <div class="about-me-box">
                 <div class="text-column">
-                    <Card style="margin-bottom: 20px;">
+                    <Card style="margin-bottom: 20px; border-style: solid; border-width: 1px; border-color: #4fafef;">
+                        <template #title></template>
                         <template #content>
                             <div class="title">About me!</div>
                             <div class="paragraph">
@@ -23,9 +24,14 @@ const ongoingProjectsList = ref([1,2,3,4,5])
                                 </p>
                             </div>
                             <div style="display: flex; flex-direction: row;">
-                                <Button label="Get my CV" size="large">
+                                <Button label="Get my CV" size="large" style="margin-right: 5px;">
                                     <template #icon>
                                         <Icon name="ri:file-text-line"></Icon>
+                                    </template>
+                                </Button>
+                                <Button label="Blog Center" size="large" severity="secondary" variant="text">
+                                    <template #icon>
+                                        <Icon name="ri:arrow-right-up-line"></Icon>
                                     </template>
                                 </Button>
                             </div>
@@ -37,6 +43,7 @@ const ongoingProjectsList = ref([1,2,3,4,5])
                                 <div class="title">Ongoing Projects</div>
                                 <div class="projects-container" v-if="ongoingProjectsList.length !== 0">
                                     <p>Here are the projects that are still ongoing:</p>
+                                    <GeneralProjectList :accepted-status="['ongoing']"></GeneralProjectList>
                                 </div>
                                 <div class="projects-container" v-else>
                                     <p>There are no projects that are still onging. Maybe come back later ;)</p>
