@@ -41,22 +41,39 @@ const processedPropsAcceptedStatus = computed(() => {
 const selectedStatus = ref(processedPropsAcceptedStatus)
 const isCardView = ref("Card") // Card | List
 
-
+const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projects').all())
 </script>
 <template>
     <div class="project-list-box">
-        <div class="search-bar-container">
-            <InputGroup style="margin-right: 5px;">
-                <InputText type="text" v-model="searchBoxText" placeholder="Search among projects..."></InputText>
-                <Button severity="secondary">
-                    <template #icon>
-                        <Icon name="ri:search-line"/>
-                    </template>
-                </Button>
-            </InputGroup>
-            <MultiSelect v-model="selectedStatus" :options="projectStatusPresets" option-label="name" filter placeholder="Project Status..." style="margin-right: 5px;"></MultiSelect>
-            <SelectButton v-model="isCardView" :options="['Card', 'List']"></SelectButton>
-        </div>
+        <DataView :value="posts">
+            <template #header>
+                <div class="search-bar-container">
+                    <InputGroup style="margin-right: 5px;">
+                        <InputText type="text" v-model="searchBoxText" placeholder="Search among projects..."></InputText>
+                        <Button severity="secondary">
+                            <template #icon>
+                                <Icon name="ri:search-line"/>
+                            </template>
+                        </Button>
+                    </InputGroup>
+                    <MultiSelect v-model="selectedStatus" :options="projectStatusPresets" option-label="name" filter placeholder="Project Status..." style="margin-right: 5px;"></MultiSelect>
+                    <SelectButton v-model="isCardView" :options="['Card', 'List']"></SelectButton>
+                </div>
+                <!-- <div style="margin-bottom: 10px;">
+                    <p v-if="posts.length != 0">Found {{ posts.length }} related topics!</p>
+                    <p v-else>No post found. Try searching with a different keyword, status, or tags.</p>
+                </div> -->
+            </template>
+            <template #list="slotProps">
+                <div v-for="post in posts" class="project-list-element">
+                    <div class="cover-column"></div>
+                    <div class="info-column">
+                        <h2>{{ post.title }}</h2>
+                        <div>{{ post.description }}</div>
+                    </div>
+                </div>
+            </template>
+        </DataView>
     </div>
 
 </template>
@@ -71,5 +88,22 @@ const isCardView = ref("Card") // Card | List
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.project-list-element {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin-bottom: 5px;
+    padding: 7px;
+    border-radius: 12px;
+}
+.project-list-element:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.project-list-element .info-column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7px;
 }
 </style>

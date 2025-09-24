@@ -4,7 +4,7 @@ export default defineContentConfig({
     collections: {
         projects: defineCollection({
             type: 'page',
-            source: 'contents/projects/**/*.md',
+            source: 'projects/**/*.md',
             schema: z.object({
                 title: z.string(),
                 description: z.string(),
@@ -15,7 +15,7 @@ export default defineContentConfig({
         }),
         blogs: defineCollection({
             type: 'page',
-            source: 'contents/blogs/*.md'
+            source: 'blogs/*.md'
         })
     }
 })
