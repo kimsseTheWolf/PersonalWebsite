@@ -89,6 +89,14 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
                     </div>
                 </div>
             </template>
+            <template #grid="slotPorps">
+                <Card v-for="post in posts">
+                    <template #header>
+                        <Image v-if="post.cover_image !== ''" :src="post.cover_image" image-style="border-radius: 7px"/>
+                        <Image v-else src="image_occupier_16_9.png" image-style="border-radius: 7px"/>
+                    </template>
+                </Card>
+            </template>
         </DataView>
     </div>
 
