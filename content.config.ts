@@ -11,6 +11,7 @@ export default defineContentConfig({
                 date: z.coerce.date(),
                 status: z.enum(['not_started', 'ongoing', 'finished']).default('ongoing'),
                 tags: z.array(z.string()),
+                cover_image: z.string(),
             })
         }),
         blogs: defineCollection({
