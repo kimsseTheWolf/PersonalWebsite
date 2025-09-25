@@ -66,10 +66,25 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
             </template>
             <template #list="slotProps">
                 <div v-for="post in posts" class="project-list-element">
-                    <div class="cover-column"></div>
+                    <div class="cover-column">
+                        <Image/>
+                    </div>
                     <div class="info-column">
-                        <h2>{{ post.title }}</h2>
-                        <div>{{ post.description }}</div>
+                        <div class="small-title">PROJECT</div>
+                        <div class="title">{{ post.title }}</div>
+                        <div class="description">{{ post.description }}</div>
+                        <div class="tags-container">
+                            <GeneralStatusTag :status="post.status"/>
+                            <div style="background-color: gray; width: 2px; height: 60%; margin-left: 5px; margin-right: 5px;">
+                                &nbsp;
+                            </div>
+                            <Tag v-for="tag in post.tags" :value="tag" style="margin-right: 5px;"/>
+                        </div>
+                    </div>
+                    <div class="side-button-column">
+                        <Button>
+                            <Icon name="ri:arrow-right-line"/>
+                        </Button>
                     </div>
                 </div>
             </template>
@@ -94,7 +109,7 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
     display: flex;
     flex-direction: row;
     height: fit-content;
-    margin-bottom: 5px;
+    margin-top: 5px;
     padding: 7px;
     border-radius: 12px;
 }
@@ -106,4 +121,39 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
     flex-direction: column;
     margin-left: 7px;
 }
+
+.project-list-element .info-column .small-title {
+    font-weight: bold;
+    font-size: smaller;
+    color: gray;
+    margin-top: 5px;
+}
+
+.project-list-element .info-column .title {
+    font-weight: bold;
+    font-size: large;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+
+.project-list-element .info-column .description {
+    margin-bottom: 7px;
+}
+
+.project-list-element .tags-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.side-button-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
 </style>
