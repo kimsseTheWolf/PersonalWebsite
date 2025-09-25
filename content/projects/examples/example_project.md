@@ -1,6 +1,6 @@
 ---
 title: "Example Project"
-description: "This is a template for future projects"
+description: "This is a template for future projects, and this description is veryyy looooooooooooooooooooooooooooooooooog loooooooooooooooog loooooooooooooooooooooooooooooooooooooooooooog"
 date: 2025-09-22
 status: "ongoing" # not_started | ongoing | finished
 tags: ["programming", "music", "game", "dev", "admin"]

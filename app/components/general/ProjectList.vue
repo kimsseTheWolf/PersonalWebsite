@@ -67,7 +67,8 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
             <template #list="slotProps">
                 <div v-for="post in posts" class="project-list-element">
                     <div class="cover-column">
-                        <Image/>
+                        <Image v-if="post.cover_image !== ''" :src="post.cover_image" width="200" image-style="border-radius: 7px"/>
+                        <Image v-else src="image_occupier_16_9.png" width="200" image-style="border-radius: 7px"/>
                     </div>
                     <div class="info-column">
                         <div class="small-title">PROJECT</div>
@@ -146,6 +147,13 @@ const {data: posts} = await useAsyncData('projects', ()=>queryCollection('projec
     align-items: center;
 }
 
+.cover-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin-right: 5px;
+}
 
 .side-button-column {
     display: flex;
